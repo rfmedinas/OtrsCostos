@@ -16,7 +16,7 @@ import javax.persistence.Column;
  * Identiica la tabla para incluir los datos de lo contratado por cliente
  * @author José Pascual Gómez Blanco
  * @serial 24/05/2022
- * url base: https://attacomsian.com/blog/spring-data-jpa-composite-primary-ForeignKey 
+ * url base: https://attacomsian.com/blog/spring-data-jpa-composite-primary-key
  */
 public class Contrato implements Serializable {
    @Id
