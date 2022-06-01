@@ -12,7 +12,7 @@ public class ContratoId implements Serializable {
     /**
      * Columna que identifica el identificador único del cliente
      */
-    private int idClient;
+    private int idCliente;
     /**
      * Columna que identifica el Ip del contrato
      */
@@ -22,14 +22,14 @@ public class ContratoId implements Serializable {
 
     }
 
-    public ContratoId(int idClient, String ip) {
-        this.idClient = idClient;
+    public ContratoId(int idCliente, String ip) {
+        this.idCliente = idCliente;
         this.ip = ip;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idClient, ip);
+        return Objects.hash(idCliente, ip);
     }
 
     @Override
@@ -41,7 +41,7 @@ public class ContratoId implements Serializable {
         if (getClass() != obj.getClass())
             return false;
         ContratoId other = (ContratoId) obj;
-        if (idClient != other.idClient)
+        if (idCliente != other.idCliente)
             return false;
         if (ip == null) {
             if (other.ip != null)

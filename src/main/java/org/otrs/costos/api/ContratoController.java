@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 import org.otrs.costos.entidades.Contrato;
+import org.otrs.costos.entidades.ContratoId;
 import org.otrs.costos.servicios.contratoService;
 
 /**
@@ -28,7 +29,7 @@ import org.otrs.costos.servicios.contratoService;
 @RestController
 @RequestMapping("api/Contratado")
 @CrossOrigin(origins = "*", methods ={RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
-public class ContratadoController {
+public class ContratoController {
     @Autowired
     private  contratoService contratoService;
 
@@ -52,6 +53,18 @@ public class ContratadoController {
         Contrato contratoSave = contratoService.saveContrato(contrato);
         return contratoSave;
     }
+
+    /**
+     * @apiNote Permite crear un Contrato
+     * @param Contrato datos para crear el nuevo Contrato
+     * @return Mensaje de Contrato Creado
+     */
+    @PostMapping("/saveMensaje")
+    public ResponseEntity<String> withResponseEntity(@RequestBody Contrato contrato) {
+        Contrato contratoSave = contratoService.saveContrato(contrato);
+        return ResponseEntity.status(HttpStatus.CREATED).body("El contrato de nit " +contratoSave.getIdCliente() + " e Ip " + contratoSave.getIp() +"; fue creado \n");
+    } 
+
 
     /**
      * @apiNote Permite actualizar un Contrato existente
@@ -84,25 +97,15 @@ public class ContratadoController {
     public void deleteAllContrato(){
         contratoService.deleteAll();
     }
-    
+  
     /**
      * @apiNote Permite eliminar un Contrato
      * @param id Indentificador del Contrato e eliminar
      */
-    @DeleteMapping(value = "/delete/{id}")
-    public ResponseEntity<Long> deletePost(@PathVariable Long id) {
-        
-        contratoService.delete(id);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
-    /**
-     * @apiNote Permite eliminar un Contrato
-     * @param id Indentificador del Contrato e eliminar
-     */
-    @DeleteMapping(value = "/{id}")
-    @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    public void deleteId(@PathVariable Long id) {
-        contratoService.delete(id);        
+    @DeleteMapping(value = "/{idclient}/{ip}")
+    @ResponseStatus(code = HttpStatus.ACCEPTED)
+    public void deleteId(@PathVariable Integer idclient, @PathVariable String ip) {
+        ContratoId contratoId = new ContratoId(idclient, ip);
+        contratoService.delete(contratoId); 
     }
 }
