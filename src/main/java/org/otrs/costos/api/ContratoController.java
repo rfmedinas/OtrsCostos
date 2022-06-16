@@ -24,7 +24,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.otrs.costos.model.Contrato;
-import org.otrs.costos.model.ContratoId;
 import org.otrs.costos.service.ContratoService;
 
 /**
@@ -52,22 +51,6 @@ public class ContratoController {
 		
 		return contratoService.getPaginator(paging);
 	}
-
-    // @GetMapping("/paises")
-    // public ResponseEntity<Page<Pais>> paginas(
-    //         @RequestParam(defaultValue = "0") int page,
-    //         @RequestParam(defaultValue = "10") int size,
-    //         @RequestParam(defaultValue = "nombre") String order,
-    //         @RequestParam(defaultValue = "true") boolean asc
-    // ){
-    //     Page<Pais> paises = paisService.paginas(
-    //             PageRequest.of(page, size, Sort.by(order)));
-    //     if(!asc)
-    //         paises = paisService.paginas(
-    //                 PageRequest.of(page, size, Sort.by(order).descending()));
-    //     return new ResponseEntity<Page<Pais>>(paises, HttpStatus.OK);
-    // }
-
 
     /**
      * @apiNote Permite listar todos los Contratos 
