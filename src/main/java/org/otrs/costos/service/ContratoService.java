@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.otrs.costos.exception.ResourceNotFoundException;
 import org.otrs.costos.model.Contrato;
-import org.otrs.costos.model.ContratoId;
 import org.otrs.costos.repository.ContratoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,8 +25,12 @@ public class ContratoService {
         return contratoRepository.getContratos();
     }
 
-    public Optional<Contrato> getContrato(int id) {
+    public Contrato getContratoErr(int id) throws ResourceNotFoundException {
         return contratoRepository.getContratoById(id);
+    }
+
+    public Optional<Contrato> getContrato(int id) {
+        return contratoRepository.getContratoByIdIni(id);
     }
 
     public Contrato saveContrato(Contrato contrato) {

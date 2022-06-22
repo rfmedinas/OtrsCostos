@@ -3,8 +3,8 @@ package org.otrs.costos.repository;
 import java.util.List;
 import java.util.Optional;
 
+import org.otrs.costos.exception.ResourceNotFoundException;
 import org.otrs.costos.model.Contrato;
-import org.otrs.costos.model.ContratoId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -34,20 +34,22 @@ public class ContratoRepository {
 
     /**
      * @apiNote consultar un contratado
-     * @param contratadoId identificador del usuario a consultar
+     * @param Id identificador del usuario a consultar
      * @return contratado consultado
      */
-    // public Optional <Contrato> getContratoById(int contratadoId) {
-    //     return contratoCrudRepository.findById(contratadoId);
-    // }
+    public Optional <Contrato> getContratoByIdIni(int Id) {
+         return contratoCrudRepository.findById(Id);
+    }
 
     /**
      * @apiNote consultar un contratado
      * @param Id identificador del usuario a consultar
      * @return contratado consultado
+     * @throws ResourceNotFoundException
      */
-    public Optional <Contrato> getContratoById(int Id) {
-        return contratoCrudRepository.findById(Id);
+    public Contrato getContratoById(int Id) throws ResourceNotFoundException {
+        return contratoCrudRepository.findById(Id)
+            .orElseThrow(() -> new ResourceNotFoundException("No existe el contrato"));
     }
 
     /**

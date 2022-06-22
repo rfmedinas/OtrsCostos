@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Optional;
 
+import org.otrs.costos.exception.ResourceNotFoundException;
 import org.otrs.costos.model.Contrato;
 import org.otrs.costos.service.ContratoService;
 
@@ -32,7 +33,7 @@ import org.otrs.costos.service.ContratoService;
  * @serial 24/05/2022
  */
 @RestController
-@RequestMapping("api/contratos")
+@RequestMapping("/contratos")
 @CrossOrigin(origins = "*", methods ={RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class ContratoController {
     @Autowired
@@ -65,12 +66,22 @@ public class ContratoController {
     /**
      * @apiNote Permite consultar un Contrato
      * @param id Indentificador del Contrato a consultar
+     * @throws ResourceNotFoundException
      */
     @GetMapping("/{id}")
+    public Contrato getContratoErr(@PathVariable Integer id) throws ResourceNotFoundException {
+         Contrato contrato = contratoService.getContratoErr(id);        
+        return contrato;                
+    }
+
+    /**
+     * @apiNote Permite consultar un Contrato
+     * @param id Indentificador del Contrato a consultar
+     */
+    @GetMapping("/id{id}")
     public Optional<Contrato> getContrato(@PathVariable Integer id) {
         Optional<Contrato> contrato = contratoService.getContrato(id);
-        return contrato;
-        
+        return contrato;        
     }
 
     /**
@@ -78,7 +89,7 @@ public class ContratoController {
      * @param Contrato datos para crear el nuevo Contrato
      * @return Contrato creado
      */
-    @PostMapping("")
+    @PostMapping()
     @ResponseStatus(code = HttpStatus.CREATED)
     public Contrato saveContratos(@RequestBody Contrato contrato){
         Contrato contratoSave = contratoService.saveContrato(contrato);
