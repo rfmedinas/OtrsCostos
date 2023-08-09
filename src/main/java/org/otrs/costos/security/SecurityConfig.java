@@ -38,6 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		cors().and()
 		.csrf().disable().authorizeRequests().antMatchers("/**/authenticate").permitAll()
 		 .antMatchers("/**/swagger-ui.html").permitAll()
+		 .antMatchers("/EstadoTicket/*").permitAll()
 		 .anyRequest()
 		 		.authenticated().and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 				 ;

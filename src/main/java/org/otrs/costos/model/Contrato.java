@@ -22,173 +22,239 @@ import javax.persistence.Column;
  *         https://attacomsian.com/blog/spring-data-jpa-composite-primary-key
  */
 public class Contrato implements Serializable {
-   @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
-   @Column(name = "id", nullable = false)
-   private int id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", nullable = false)
+	private int id;
 
-   /**
-    * Columna que identifica el identificador único del cliente
-    */
-   @Column(name = "id_cliente", nullable = false)
-   private int idCliente;
-   /**
-    * Columna que identifica el Ip del contrato
-    */
-   @Column(name = "ip", nullable = false)
-   private String ip;
+	/**
+	 * Columna que identifica el identificador único del cliente
+	 */
+	@Column(name = "id_cliente", nullable = false)
+	private int idCliente;
+	/**
+	 * Columna que identifica el Ip del contrato
+	 */
+	@Column(name = "ip", nullable = false)
+	private String ip;
 
-   @Column(name = "fecha_inicio")
-   private Date fechaInicio;
+	@Column(name = "fecha_inicio")
+	private Date fechaInicio;
 
-   @Column(name = "fecha_final")
-   private Date fechaFinal;
+	@Column(name = "fecha_final")
+	private Date fechaFinal;
 
-   @Column(name = "fecha_servicio")
-   private Date fechaServicio;
+	@Column(name = "fecha_servicio")
+	private Date fechaServicio;
 
-   @Column(name = "h_presencial", nullable = false, columnDefinition = "DECIMAL(10,2) default 0")
-   private double hPresencial;
+	@Column(name = "h_presencial", nullable = false, columnDefinition = "DECIMAL(10,2) default 0")
+	private double hPresencial;
 
-   @Column(name = "h_virtual", nullable = false, columnDefinition = "DECIMAL(10,2) default 0")
-   private double hVirtual;
+	@Column(name = "h_virtual", nullable = false, columnDefinition = "DECIMAL(10,2) default 0")
+	private double hVirtual;
 
-   @Column(name = "h_ajuste", nullable = false, columnDefinition = "DECIMAL(10,2) default 0")
-   private double hAjuste;
+	@Column(name = "h_ajuste", nullable = false, columnDefinition = "DECIMAL(10,2) default 0")
+	private double hAjuste;
 
-   @Column(name = "transaccion_tol", nullable = false, columnDefinition = "DECIMAL(10,2) default 0")
-   private double transaccionTol;
+	@Column(name = "transaccion_tol", nullable = false, columnDefinition = "DECIMAL(10,2) default 0")
+	private double transaccionTol;
 
-   @Column(name = "estado", nullable = false, columnDefinition = "int default -1")
-   private boolean estado;
+	@Column(name = "estado", nullable = false, columnDefinition = "int default -1")
+	private boolean estado;
 
-   @Column(name = "autoriza")
-   private String autoriza;
+	@Column(name = "autoriza")
+	private String autoriza;
 
-   @Column(name = "asesor")
-   private String asesor;
+	@Column(name = "asesor")
+	private String asesor;
 
-   public Contrato() {
-   }
+	@Column(name = "observacion")
+	private String observacion;
 
-   public Contrato(int idCliente, String ip, Date fechaInicio, Date fechaFinal, Date fechaServicio, double hPresencial,
-         double hVirtual, double hAjuste, double transaccionTol, boolean estado, String autoriza, String asesor) {
-      this.idCliente = idCliente;
-      this.ip = ip;
-      this.fechaInicio = fechaInicio;
-      this.fechaFinal = fechaFinal;
-      this.fechaServicio = fechaServicio;
-      this.hPresencial = hPresencial;
-      this.hVirtual = hVirtual;
-      this.hAjuste = hAjuste;
-      this.transaccionTol = transaccionTol;
-      this.estado = estado;
-      this.autoriza = autoriza;
-      this.asesor = asesor;
-   }
+	@Column(name = "creacion")
+	private Date creacion;
 
-   public int getId() {
-      return id;
-   }
+	@Column(name = "ano")
+	private int ano;
 
-   public void setId(int id) {
-      this.id = id;
-   }
+	@Column(name = "horas_ano_anterior", nullable = false, columnDefinition = "DECIMAL(10,2) default 0") 
+	private double horas_ano_anterior;
 
-   public int getIdCliente() {
-      return idCliente;
-   }
+	@Column(name = "fecha_corte") 
+	private Date fecha_corte;
 
-   public void setIdCliente(int idCliente) {
-      this.idCliente = idCliente;
-   }
+	@Column(name = "horas_corte" , nullable = false, columnDefinition = "DECIMAL(10,2) default 0")
+	private double horas_corte;
 
-   public String getIp() {
-      return ip;
-   }
+	public Contrato() {
+	}
 
-   public void setIp(String ip) {
-      this.ip = ip;
-   }
+	public Contrato(int idCliente, String ip, Date fechaInicio, Date fechaFinal, Date fechaServicio, double hPresencial,
+			double hVirtual, double hAjuste, double transaccionTol, boolean estado, String autoriza, String asesor) {
+		this.idCliente = idCliente;
+		this.ip = ip;
+		this.fechaInicio = fechaInicio;
+		this.fechaFinal = fechaFinal;
+		this.fechaServicio = fechaServicio;
+		this.hPresencial = hPresencial;
+		this.hVirtual = hVirtual;
+		this.hAjuste = hAjuste;
+		this.transaccionTol = transaccionTol;
+		this.estado = estado;
+		this.autoriza = autoriza;
+		this.asesor = asesor;
+	}
 
-   public Date getFechaInicio() {
-      return fechaInicio;
-   }
+	public int getId() {
+		return id;
+	}
 
-   public void setFechaInicio(Date fechaInicio) {
-      this.fechaInicio = fechaInicio;
-   }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-   public Date getFechaFinal() {
-      return fechaFinal;
-   }
+	public int getIdCliente() {
+		return idCliente;
+	}
 
-   public void setFechaFinal(Date fechaFinal) {
-      this.fechaFinal = fechaFinal;
-   }
+	public void setIdCliente(int idCliente) {
+		this.idCliente = idCliente;
+	}
 
-   public Date getFechaServicio() {
-      return fechaServicio;
-   }
+	public String getIp() {
+		return ip;
+	}
 
-   public void setFechaServicio(Date fechaServicio) {
-      this.fechaServicio = fechaServicio;
-   }
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
 
-   public double gethPresencial() {
-      return hPresencial;
-   }
+	public Date getFechaInicio() {
+		return fechaInicio;
+	}
 
-   public void sethPresencial(double hPresencial) {
-      this.hPresencial = hPresencial;
-   }
+	public void setFechaInicio(Date fechaInicio) {
+		this.fechaInicio = fechaInicio;
+	}
 
-   public double gethVirtual() {
-      return hVirtual;
-   }
+	public Date getFechaFinal() {
+		return fechaFinal;
+	}
 
-   public void sethVirtual(double hVirtual) {
-      this.hVirtual = hVirtual;
-   }
+	public void setFechaFinal(Date fechaFinal) {
+		this.fechaFinal = fechaFinal;
+	}
 
-   public double gethAjuste() {
-      return hAjuste;
-   }
+	public Date getFechaServicio() {
+		return fechaServicio;
+	}
 
-   public void sethAjuste(double hAjuste) {
-      this.hAjuste = hAjuste;
-   }
+	public void setFechaServicio(Date fechaServicio) {
+		this.fechaServicio = fechaServicio;
+	}
 
-   public double getTransaccionTol() {
-      return transaccionTol;
-   }
+	public double gethPresencial() {
+		return hPresencial;
+	}
 
-   public void setTransaccionTol(double transaccionTol) {
-      this.transaccionTol = transaccionTol;
-   }
+	public void sethPresencial(double hPresencial) {
+		this.hPresencial = hPresencial;
+	}
 
-   public boolean isEstado() {
-      return estado;
-   }
+	public double gethVirtual() {
+		return hVirtual;
+	}
 
-   public void setEstado(boolean estado) {
-      this.estado = estado;
-   }
+	public void sethVirtual(double hVirtual) {
+		this.hVirtual = hVirtual;
+	}
 
-   public String getAutoriza() {
-      return autoriza;
-   }
+	public double gethAjuste() {
+		return hAjuste;
+	}
 
-   public void setAutoriza(String autoriza) {
-      this.autoriza = autoriza;
-   }
+	public void sethAjuste(double hAjuste) {
+		this.hAjuste = hAjuste;
+	}
 
-   public String getAsesor() {
-      return asesor;
-   }
+	public double getTransaccionTol() {
+		return transaccionTol;
+	}
 
-   public void setAsesor(String asesor) {
-      this.asesor = asesor;
-   }
+	public void setTransaccionTol(double transaccionTol) {
+		this.transaccionTol = transaccionTol;
+	}
+
+	public boolean isEstado() {
+		return estado;
+	}
+
+	public void setEstado(boolean estado) {
+		this.estado = estado;
+	}
+
+	public String getAutoriza() {
+		return autoriza;
+	}
+
+	public void setAutoriza(String autoriza) {
+		this.autoriza = autoriza;
+	}
+
+	public String getAsesor() {
+		return asesor;
+	}
+
+	public void setAsesor(String asesor) {
+		this.asesor = asesor;
+	}
+
+	public String getObservacion() {
+		return observacion;
+	}
+
+	public void setObservacion(String observacion) {
+		this.observacion = observacion;
+	}
+
+	public Date getCreacion() {
+		return creacion;
+	}
+
+	public void setCreacion(Date creacion) {
+		this.creacion = creacion;
+	}
+
+	public int getAno() {
+		return ano;
+	}
+
+	public void setAno(int ano) {
+		this.ano = ano;
+	}
+
+	public double getHoras_ano_anterior() {
+		return horas_ano_anterior;
+	}
+
+	public void setHoras_ano_anterior(double horas_ano_anterior) {
+		this.horas_ano_anterior = horas_ano_anterior;
+	}
+
+	public Date getFecha_corte() {
+		return fecha_corte;
+	}
+
+	public void setFecha_corte(Date fecha_corte) {
+		this.fecha_corte = fecha_corte;
+	}
+
+	public double getHoras_corte() {
+		return horas_corte;
+	}
+
+	public void setHoras_corte(double horas_corte) {
+		this.horas_corte = horas_corte;
+	}
 
 }
