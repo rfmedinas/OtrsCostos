@@ -18,5 +18,14 @@ public class ConsultaEstadoRepository {
 		return consultaEstadoCrudRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("No existe el número ticket"));
 	}
+	public ConsultaEstado getConsultaEstadoById(String id, String nit) throws ResourceNotFoundException {
+		
+		ConsultaEstado resultado= consultaEstadoCrudRepository.findById(id)
+		 				.orElseThrow(() -> new ResourceNotFoundException("No existe el número ticket"));
+		if (nit.equals(resultado.getNit())){
+			return resultado;
+		}
+		throw new ResourceNotFoundException("El Ticket no pertenece a la entidad");
+	}
 
 }
