@@ -44,9 +44,6 @@ public class ConsultaEstado implements Serializable{
 
 	}
 
-
-
-
 	public ConsultaEstado(String idTicket, String nit, String dependencia, String estado, String tipoSolicitud,
 			String solicitud, String nota, Date fechaNota) {
 		super();
@@ -59,7 +56,6 @@ public class ConsultaEstado implements Serializable{
 		this.nota = nota;
 		this.fechaNota = fechaNota;
 	}
-
 
 	public String getIdTicket() {
 		return idTicket;
@@ -109,5 +105,20 @@ public class ConsultaEstado implements Serializable{
 		this.solicitud = solicitud;
 	}
 
+	public String getNota() {
+		return nota;
+	}
+
+	public void setNota(String nota) {
+		this.nota = nota;
+	}
+
+	public Date getFechaNota() {
+		return fechaNota;
+	}
+
+	public void setFechaNota(Date fechaNota) {
+		this.fechaNota = fechaNota;
+	}
 
 }
