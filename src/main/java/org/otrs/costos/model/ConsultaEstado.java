@@ -34,13 +34,21 @@ public class ConsultaEstado implements Serializable{
 	@Column (name="transaccion")
 	private String solicitud;
 
+	@Column (name="detalle")
+	private String nota;
+
+	@Column (name="fecha_creacion")
+	private Date fechaNota;
+
 	public ConsultaEstado() {
-		
+
 	}
 
-	
+
+
+
 	public ConsultaEstado(String idTicket, String nit, String dependencia, String estado, String tipoSolicitud,
-			String solicitud) {
+			String solicitud, String nota, Date fechaNota) {
 		super();
 		this.idTicket = idTicket;
 		this.nit = nit;
@@ -48,6 +56,8 @@ public class ConsultaEstado implements Serializable{
 		this.estado = estado;
 		this.tipoSolicitud = tipoSolicitud;
 		this.solicitud = solicitud;
+		this.nota = nota;
+		this.fechaNota = fechaNota;
 	}
 
 
