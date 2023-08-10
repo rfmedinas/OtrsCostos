@@ -46,5 +46,9 @@ public ConsultaEstado get(@PathVariable String id) throws ResourceNotFoundExcept
     ConsultaEstado consultaEstado = consultaEstadoService.getConsultaEstadoService(id);        
    return consultaEstado;                
 }
-
+@GetMapping("/{id}/nit/{nit}")
+public ConsultaEstado get(@PathVariable String id, @PathVariable String nit) throws ResourceNotFoundException {
+    ConsultaEstado consultaEstado = consultaEstadoService.getConsultaEstadoService(id,nit);        
+   return consultaEstado;                
+}
 }

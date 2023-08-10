@@ -40,6 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		 .antMatchers("/**/swagger-ui.html").permitAll()
 		 .antMatchers("/EstadoTicket/*").permitAll()
 		 .antMatchers("/ping").permitAll()
+		 .antMatchers("/EstadoTicket/**/nit/*").permitAll()
 		 .anyRequest()
 		 		.authenticated().and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 				 ;

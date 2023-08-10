@@ -16,4 +16,7 @@ public class ConsultaEstadoService {
 	public  ConsultaEstado getConsultaEstadoService(String id) throws ResourceNotFoundException{
 		return 	consultaEstadoRepository.getConsultaEstadoById(id);
 	}
+	public  ConsultaEstado getConsultaEstadoService(String id, String nit) throws ResourceNotFoundException{
+		return 	consultaEstadoRepository.getConsultaEstadoById(id,nit);
+	}
 }
