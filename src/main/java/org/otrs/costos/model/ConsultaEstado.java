@@ -40,14 +40,14 @@ public class ConsultaEstado implements Serializable{
 	@Column (name="fecha_creacion")
 	private Date fechaNota;
 
-	@Column (name="Usuario_Solicitante")
-	private String usuarioSolicitante;
+	@Column (name="usuario")
+	private String usuario;
 	public ConsultaEstado() {
 
 	}
 
 	public ConsultaEstado(String idTicket, String nit, String dependencia, String estado, String tipoSolicitud,
-			String solicitud, String nota, Date fechaNota, String usuarioSolicitante) {
+			String solicitud, String nota, Date fechaNota, String usuario) {
 		super();
 		this.idTicket = idTicket;
 		this.nit = nit;
@@ -57,7 +57,7 @@ public class ConsultaEstado implements Serializable{
 		this.solicitud = solicitud;
 		this.nota = nota;
 		this.fechaNota = fechaNota;
-		this.usuarioSolicitante = usuarioSolicitante;
+		this.usuario = usuario;
 	}
 
 	public String getIdTicket() {
@@ -124,11 +124,11 @@ public class ConsultaEstado implements Serializable{
 		this.fechaNota = fechaNota;
 	}
 
-	public String getUsuarioSolicitante() {
-		return usuarioSolicitante;
+	public String getUsuario() {
+		return usuario;
 	}
 
-	public void setUsuarioSolicitante(String usuarioSolicitante) {
-		this.usuarioSolicitante = usuarioSolicitante;
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 }
